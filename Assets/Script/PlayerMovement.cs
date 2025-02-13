@@ -11,13 +11,13 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField]float speed = 1f;
     [SerializeField]float jumpHeight = 3f;
+    [SerializeField]float dashingPower = 15f;
     float direction = 0;
     bool isGrounded = false;
     //bool isFacingRight = true;
 
     bool canDash = true; 
     bool isDashing = false;
-    float dashingPower = 15f;
     float dashingTime = 0.2f;
     float dashingCooldown = 1f;
 
