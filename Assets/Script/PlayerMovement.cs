@@ -14,21 +14,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]float dashingPower = 15f;
     float direction = 0;
     bool isGrounded = false;
-    //bool isFacingRight = true;
+    bool isFacingRight = true;
 
     bool canDash = true; 
     bool isDashing = false;
     float dashingTime = 0.2f;
     float dashingCooldown = 1f;
 
-    //Animator anim; 
+    Animator anim; 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,10 +39,10 @@ public class PlayerMovement : MonoBehaviour
             Move(direction);
         }
 
-        // if ((isFacingRight && direction == -1) || (!isFacingRight && direction == 1))
-        // {
-        //     Flip();
-        // }
+        if ((isFacingRight && direction == -1) || (!isFacingRight && direction == 1))
+        {
+            Flip();
+        }
     }
 
     void OnMove(InputValue value)
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     void Move(float dir)
     {
         rb.linearVelocity = new Vector2(dir * speed, rb.linearVelocity.y);
-        //anim.SetBool("isRunning", dir != 0);
+        anim.SetBool("isRunning", dir != 0);
 
     }
 
@@ -121,12 +121,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // private void Flip()
-    // {
-    //     isFacingRight = !isFacingRight;
-    //     Vector3 newLocalScale = transform.localScale;
-    //     newLocalScale.x *= -1f;
-    //     transform.localScale = newLocalScale;
-    // }
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 newLocalScale = transform.localScale;
+        newLocalScale.x *= -1f;
+        transform.localScale = newLocalScale;
+    }
 }
 
