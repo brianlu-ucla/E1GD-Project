@@ -43,6 +43,23 @@ public class PlayerMovement : MonoBehaviour
         {
             Flip();
         }
+        
+
+        if (rb.linearVelocity.y > 0.001)
+        {
+            anim.SetBool("isFalling", false);
+            anim.SetBool("isJumping", true);
+        }
+        else if (rb.linearVelocity.y < -0.001)
+        {
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isFalling", true);
+        }
+        else 
+        {
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isFalling", false);
+        }
     }
 
     void OnMove(InputValue value)
