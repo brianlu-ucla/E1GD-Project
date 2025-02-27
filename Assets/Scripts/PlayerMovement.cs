@@ -11,16 +11,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpHeight = 3f;
     [SerializeField] float jumpTime = 0.5f;
     [SerializeField] float dashingPower = 15f;
+    [SerializeField] float dashingCooldown = 1f;
     float direction = 0;
     bool isGrounded = false;
     bool isFacingRight = true;
     bool canDash = true; 
     bool isDashing = false;
     float dashingTime = 0.2f;
-    float dashingCooldown = 1f;
     float jumpTimer = 0f;
     bool isJumping = false;
     int jumpCount = 0;
+    int dashCount = 0;
     Animator anim; 
 
     // New field for storing the original speed value
@@ -39,12 +40,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isJumping)
         {
-            rb.linearVelocity = Vector2.up * jumpHeight * (jumpTimer / jumpTime);
+            float tmp = jumpTimer / jumpTime;
+            rb.linearVelocity = Vector2.up * (jumpHeight * tmp * Mathf.Pow(1 - tmp, 0.5f));
             jumpTimer -= Time.deltaTime;
             if (jumpTimer <= 0)
             {
                 isJumping = false;
-                rb.linearVelocity = Vector2.down * jumpHeight * (jumpTimer / jumpTime);
             }
         }
         else if (!isGrounded)
@@ -138,10 +139,12 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Dash()
     {
         canDash = false;
+        dashCount++;
+        Debug.Log("# of Dashes: " + dashCount);
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.linearVelocity = new Vector2(direction * dashingPower, 0f);
+        rb.linearVelocity = new Vector2((isFacingRight ? 1 : -1) * dashingPower, 0f);
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
         isDashing = false;
