@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     float dashingCooldown = 1f;
     float jumpTimer = 0f;
     bool isJumping = false;
+    int jumpCount = 0;
     Animator anim; 
 
     // New field for storing the original speed value
@@ -95,6 +96,8 @@ public class PlayerMovement : MonoBehaviour
         bool isPressed = value.isPressed;
         if (isGrounded && isPressed)
         {
+            jumpCount++;
+            Debug.Log("# of Jumps: " + jumpCount);
             isJumping = true;
             jumpTimer = jumpTime;
         }
