@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 using Input = UnityEngine.Windows.Input;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpTime = 0.5f;
     [SerializeField] float dashingPower = 15f;
     [SerializeField] float dashingCooldown = 1f;
+    [SerializeField] int maxJumps = 5;
+    [SerializeField] int maxDashes = 5;
     float direction = 0;
     bool isGrounded = false;
     bool isFacingRight = true;
@@ -95,7 +98,8 @@ public class PlayerMovement : MonoBehaviour
     void OnJump(InputValue value)
     {
         bool isPressed = value.isPressed;
-        if (isGrounded && isPressed)
+
+        if (isGrounded && isPressed && jumpCount < maxJumps)
         {
             jumpCount++;
             Debug.Log("# of Jumps: " + jumpCount);
@@ -154,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDash()
     {
-        if (canDash)
+        if (canDash && dashCount < maxDashes)
         {
             StartCoroutine(Dash());
         }
@@ -179,5 +183,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(duration);
         speed = baseSpeed;
     }
+
 }
 
