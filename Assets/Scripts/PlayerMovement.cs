@@ -1,38 +1,36 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 using System.Collections;
 using System.Collections.Generic;
 using Input = UnityEngine.Windows.Input;
 
-
 public class PlayerMovement : MonoBehaviour
 {
-
     Rigidbody2D rb;
-    [SerializeField]float speed = 1f;
-    [SerializeField]float jumpHeight = 3f;
-    [SerializeField]float jumpTime = 0.5f;
-    [SerializeField]float dashingPower = 15f;
+    [SerializeField] float speed = 1f;
+    [SerializeField] float jumpHeight = 3f;
+    [SerializeField] float jumpTime = 0.5f;
+    [SerializeField] float dashingPower = 15f;
     float direction = 0;
     bool isGrounded = false;
     bool isFacingRight = true;
-
     bool canDash = true; 
     bool isDashing = false;
     float dashingTime = 0.2f;
     float dashingCooldown = 1f;
     float jumpTimer = 0f;
     bool isJumping = false;
-
     Animator anim; 
 
+    // New field for storing the original speed value
+    private float baseSpeed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        baseSpeed = speed;  // store the initial speed
     }
 
     // Update is called once per frame
@@ -51,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
         else if (!isGrounded)
         {
             isJumping = false;
-            // rb.linearVelocity = Vector2.down * jumpHeight;
         }
 
         if (!isDashing)
@@ -64,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
         
-
         if (rb.linearVelocity.y > 0.001)
         {
             anim.SetBool("isFalling", false);
@@ -92,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(dir * speed, rb.linearVelocity.y);
         anim.SetBool("isRunning", dir != 0);
-
     }
 
     void OnJump(InputValue value)
@@ -165,6 +160,18 @@ public class PlayerMovement : MonoBehaviour
         Vector3 newLocalScale = transform.localScale;
         newLocalScale.x *= -1f;
         transform.localScale = newLocalScale;
+    }
+
+    public void BoostSpeed(float multiplier, float duration)
+    {
+        StartCoroutine(SpeedBoostCoroutine(multiplier, duration));
+    }
+
+    IEnumerator SpeedBoostCoroutine(float multiplier, float duration)
+    {
+        speed = baseSpeed * multiplier;
+        yield return new WaitForSeconds(duration);
+        speed = baseSpeed;
     }
 }
 
