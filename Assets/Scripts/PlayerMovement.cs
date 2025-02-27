@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 using System.Collections;
 using System.Collections.Generic;
+using Input = UnityEngine.Windows.Input;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField]float speed = 1f;
     [SerializeField]float jumpHeight = 3f;
+    [SerializeField]float jumpTime = 0.5f;
     [SerializeField]float dashingPower = 15f;
     float direction = 0;
     bool isGrounded = false;
@@ -20,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     bool isDashing = false;
     float dashingTime = 0.2f;
     float dashingCooldown = 1f;
+    float jumpTimer = 0f;
+    bool isJumping = false;
 
     Animator anim; 
 
@@ -34,6 +38,22 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isJumping)
+        {
+            rb.linearVelocity = Vector2.up * jumpHeight * (jumpTimer / jumpTime);
+            jumpTimer -= Time.deltaTime;
+            if (jumpTimer <= 0)
+            {
+                isJumping = false;
+                rb.linearVelocity = Vector2.down * jumpHeight * (jumpTimer / jumpTime);
+            }
+        }
+        else if (!isGrounded)
+        {
+            isJumping = false;
+            // rb.linearVelocity = Vector2.down * jumpHeight;
+        }
+
         if (!isDashing)
         {
             Move(direction);
@@ -75,17 +95,18 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void OnJump()
+    void OnJump(InputValue value)
     {
-        if (isGrounded)
+        bool isPressed = value.isPressed;
+        if (isGrounded && isPressed)
         {
-            Jump();
+            isJumping = true;
+            jumpTimer = jumpTime;
         }
-    }
-
-    void Jump()
-    {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpHeight);
+        else if (isJumping)
+        {
+            isJumping = false;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
