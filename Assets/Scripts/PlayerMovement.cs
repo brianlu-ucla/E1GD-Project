@@ -180,6 +180,17 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 
+    void OnReset()
+    {
+        dashCount = 0;
+        jumpCount = 0;
+        isJumping = false;
+        rb.linearVelocity = Vector2.zero;
+        transform.position = GetComponent<PlayerHealth>().respawnPoint.position;
+        ScoreManager.instance.UpdateDashes(maxDashes);
+        ScoreManager.instance.UpdateJumps(maxJumps);
+    }
+
     void OnDash()
     {
         if (canDash && dashCount < maxDashes)

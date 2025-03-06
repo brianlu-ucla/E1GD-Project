@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using Unity.Mathematics.Geometry;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -65,5 +67,10 @@ public class ScoreManager : MonoBehaviour
         {
             dashText.text = "Dashes: " + dashes;
         }
+    }
+
+    public void SwitchLevel()
+    {
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1)  % SceneManager.sceneCountInBuildSettings);
     }
 }
