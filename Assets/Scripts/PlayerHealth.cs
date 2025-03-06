@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
     {
         // Initialize current health to full (each heart equals 2 health units)
         currentHealth = maxHearts * 2;
+        transform.position = respawnPoint.position;
         UpdateHeartsUI();
     }
 
