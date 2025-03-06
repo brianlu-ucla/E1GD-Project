@@ -47,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         baseSpeed = speed;  // store the initial speed
+        ScoreManager.instance.UpdateDashes(maxDashes);
+        ScoreManager.instance.UpdateJumps(maxJumps);
     }
 
     // Update is called once per frame
@@ -115,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && isPressed && jumpCount < maxJumps)
         {
             jumpCount++;
+            ScoreManager.instance.UpdateJumps(maxJumps - jumpCount);
             Debug.Log("# of Jumps: " + jumpCount);
             isJumping = true;
             jumpTimer = jumpTime;
@@ -157,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         dashCount++;
+        ScoreManager.instance.UpdateDashes(maxDashes - dashCount);
         Debug.Log("# of Dashes: " + dashCount);
         isDashing = true;
         float originalGravity = rb.gravityScale;
@@ -196,6 +200,5 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(duration);
         speed = baseSpeed;
     }
-
 }
 
