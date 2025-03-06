@@ -25,7 +25,18 @@ public class PlayerMovement : MonoBehaviour
     bool isJumping = false;
     int jumpCount = 0;
     int dashCount = 0;
-    Animator anim; 
+    Animator anim;
+
+    //footstep sound variables
+    [SerializeField] private AudioSource footstepAudio;
+
+    public void PlayFootstep()
+    {
+        if (isGrounded && footstepAudio != null)
+        {
+            footstepAudio.Play();
+        }
+    }
 
     // New field for storing the original speed value
     private float baseSpeed;
@@ -93,7 +104,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(dir * speed, rb.linearVelocity.y);
         anim.SetBool("isRunning", dir != 0);
+
     }
+
 
     void OnJump(InputValue value)
     {
