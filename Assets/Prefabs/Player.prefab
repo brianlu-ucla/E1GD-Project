@@ -107,7 +107,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -177,11 +177,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797fccfafb0614ebf990718ad6e6f710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpHeight: 25
+  speed: 8
+  jumpHeight: 30
   jumpTime: 0.5
-  dashingPower: 15
+  dashingPower: 20
   dashingCooldown: 0.2
+  maxJumps: 5
+  maxDashes: 5
+  footstepAudio: {fileID: 0}
 --- !u!114 &7484488057868075999
 MonoBehaviour:
   m_ObjectHideFlags: 0

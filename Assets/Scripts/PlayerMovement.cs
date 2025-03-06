@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int maxDashes = 5;
     float direction = 0;
     bool isGrounded = false;
+    bool canJump = false;
     bool isFacingRight = true;
     bool canDash = true; 
     bool isDashing = false;
@@ -114,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool isPressed = value.isPressed;
 
-        if (isGrounded && isPressed && jumpCount < maxJumps)
+        if (canJump && isPressed && jumpCount < maxJumps)
         {
             jumpCount++;
             ScoreManager.instance.UpdateJumps(maxJumps - jumpCount);
@@ -144,6 +145,11 @@ public class PlayerMovement : MonoBehaviour
                 {
                     isGrounded = true;
                 }
+
+                if (Vector2.Angle(collision.GetContact(i).normal, Vector2.up) < 135f)
+                {
+                    canJump = true;
+                }
             }
         }
     }
@@ -153,6 +159,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+            canJump = false;
         }
     }
 
