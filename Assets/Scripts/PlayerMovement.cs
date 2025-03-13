@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Input = UnityEngine.Windows.Input;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     int dashCount = 0;
     Animator anim;
 
+    private int baseJumps;
+    private int baseDashes;
+
     //footstep sound variables
     [SerializeField] private AudioSource footstepAudio;
 
@@ -48,8 +52,14 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         baseSpeed = speed;  // store the initial speed
-        ScoreManager.instance.UpdateDashes(maxDashes);
-        ScoreManager.instance.UpdateJumps(maxJumps);
+
+        baseJumps = maxJumps;
+        baseDashes = maxDashes;
+
+        ScoreManager.instance.UpdateDashes(maxDashes - dashCount);
+        ScoreManager.instance.UpdateJumps(maxJumps - jumpCount);
+        ScoreManager.instance.SetLevelStartingScore(ScoreManager.instance.score);
+
     }
 
     // Update is called once per frame
@@ -182,13 +192,20 @@ public class PlayerMovement : MonoBehaviour
 
     void OnReset()
     {
-        dashCount = 0;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        /*dashCount = 0;
         jumpCount = 0;
         isJumping = false;
         rb.linearVelocity = Vector2.zero;
+        maxJumps = baseJumps;
+        maxDashes = baseDashes;*/
+        ScoreManager.instance.ResetScoreToLevelStart();
+        /*
         transform.position = GetComponent<PlayerHealth>().respawnPoint.position;
         ScoreManager.instance.UpdateDashes(maxDashes);
-        ScoreManager.instance.UpdateJumps(maxJumps);
+        ScoreManager.instance.UpdateJumps(maxJumps);*/
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     void OnDash()
@@ -217,6 +234,23 @@ public class PlayerMovement : MonoBehaviour
         speed = baseSpeed * multiplier;
         yield return new WaitForSeconds(duration);
         speed = baseSpeed;
+    }
+
+    public int MaxJumps { get { return maxJumps; } }
+    public int MaxDashes { get { return maxDashes; } }
+    public int JumpCount { get { return jumpCount; } }
+    public int DashCount { get { return dashCount; } }
+
+    public void AddExtraJumps(int amount)
+    {
+        maxJumps += amount;
+        ScoreManager.instance.UpdateJumps(maxJumps - jumpCount);
+    }
+
+    public void AddExtraDashes(int amount)
+    {
+        maxDashes += amount;
+        ScoreManager.instance.UpdateDashes(maxDashes - dashCount);
     }
 }
 
