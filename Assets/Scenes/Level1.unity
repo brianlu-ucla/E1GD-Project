@@ -2770,8 +2770,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &634045079 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7456912258588704609, guid: 93f9e048970874e6b94823bafd6ca956, type: 3}
@@ -2787,8 +2787,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c089bfdbe79942a0bceac223cd481a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   maxHearts: 5
   currentHealth: 0
   heartImages:
@@ -2828,8 +2828,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_ComponentVersion: 2
   m_LightType: 4
   m_BlendStyleIndex: 0
@@ -2894,8 +2894,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &952183354
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,8 +3132,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
@@ -3194,8 +3194,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
@@ -3225,8 +3225,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -5366,8 +5366,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+<<<<<<< HEAD
+  m_Name:
+  m_EditorClassIdentifier:
+=======
   m_Name: 
   m_EditorClassIdentifier: 
+>>>>>>> 528ebb1077877ab18daad6a68621d0d6ff49785c
 --- !u!1 &1830836107
 GameObject:
   m_ObjectHideFlags: 0
@@ -5506,8 +5511,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &2046163356 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3673339615814989288, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
@@ -5517,8 +5522,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &1267210448278136054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5541,7 +5546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2852495521876146520, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
       propertyPath: m_fontAsset
-      value: 
+      value:
       objectReference: {fileID: 11400000, guid: 204749594c47d4a928baef294eb496a4, type: 2}
     - target: {fileID: 2852495521876146520, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
       propertyPath: m_fontSizeBase
@@ -5549,7 +5554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2852495521876146520, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
+      value:
       objectReference: {fileID: 6025664063269219995, guid: 204749594c47d4a928baef294eb496a4, type: 2}
     - target: {fileID: 2852495521876146520, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -5653,7 +5658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5216378325269510253, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
       propertyPath: m_fontAsset
-      value: 
+      value:
       objectReference: {fileID: 11400000, guid: 204749594c47d4a928baef294eb496a4, type: 2}
     - target: {fileID: 5216378325269510253, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
       propertyPath: m_fontSizeBase
@@ -5661,7 +5666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5216378325269510253, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
+      value:
       objectReference: {fileID: 6025664063269219995, guid: 204749594c47d4a928baef294eb496a4, type: 2}
     - target: {fileID: 5216378325269510253, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -5677,11 +5682,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7750332841332725579, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
       propertyPath: m_fontAsset
-      value: 
+      value:
       objectReference: {fileID: 11400000, guid: 204749594c47d4a928baef294eb496a4, type: 2}
     - target: {fileID: 7750332841332725579, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
+      value:
       objectReference: {fileID: 6025664063269219995, guid: 204749594c47d4a928baef294eb496a4, type: 2}
     - target: {fileID: 7750332841332725579, guid: fc38cc2a546824d9b8de301865f6f200, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -5762,7 +5767,11 @@ SceneRoots:
   - {fileID: 189051082}
   - {fileID: 1382892190522276220}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 952183356}
+=======
+  - {fileID: 1830836109}
+>>>>>>> 528ebb1077877ab18daad6a68621d0d6ff49785c
 =======
   - {fileID: 1830836109}
 >>>>>>> 528ebb1077877ab18daad6a68621d0d6ff49785c
