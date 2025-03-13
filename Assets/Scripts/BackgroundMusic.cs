@@ -1,16 +1,25 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BackgroundMusic : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private AudioSource audioSource;
+    public Slider volumeSlider;
+
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+
+        // setting the default volume
+        if (volumeSlider != null)
+        {
+            volumeSlider.value = audioSource.volume; // sets the slider to current volume
+            volumeSlider.onValueChanged.AddListener(SetVolume);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetVolume(float volume)
     {
-        
+        audioSource.volume = volume; // changes the volume based on slider value
     }
 }

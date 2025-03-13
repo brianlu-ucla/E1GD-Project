@@ -12,7 +12,7 @@ public class OptionWindow : MonoBehaviour
 
     public void ToggleOptionPanel()
     {
-        optionPanel.SetActive(!optionPanel.activeSelf); // Show/Hide the panel
+        optionPanel.SetActive(!optionPanel.activeSelf); // show/hide the panel
     }
 }
 
